@@ -24,7 +24,7 @@ export function Footer() {
               {siteConfig.tagline}
             </p>
             <p className="mt-1 font-display text-lg font-bold sm:text-xl">
-              Australia&apos;s buyer agency for investors.
+              {siteConfig.rating}
             </p>
           </div>
           <Link
@@ -82,15 +82,35 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            <a
-              href={siteConfig.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 border border-white/15 px-3 py-2 text-xs text-white/70 transition hover:border-brand-accent/40 hover:text-brand-accent"
-            >
-              Facebook
-              <span aria-hidden="true">↗</span>
-            </a>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <a
+                href={siteConfig.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-white/15 px-3 py-2 text-xs text-white/70 transition hover:border-brand-accent/40 hover:text-brand-accent"
+              >
+                Facebook
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                href={siteConfig.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-white/15 px-3 py-2 text-xs text-white/70 transition hover:border-brand-accent/40 hover:text-brand-accent"
+              >
+                Instagram
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                href={siteConfig.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-white/15 px-3 py-2 text-xs text-white/70 transition hover:border-brand-accent/40 hover:text-brand-accent"
+              >
+                TikTok
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
             <p className="mt-2 text-xs text-white/40">{siteConfig.socialHandle}</p>
           </div>
 
@@ -127,6 +147,7 @@ export function Footer() {
                   Office
                 </p>
                 <p className="mt-1 text-sm text-white/70">{siteConfig.address}</p>
+                <p className="mt-1 text-sm text-white/55">{siteConfig.secondaryAddress}</p>
                 <p className="mt-1 text-xs text-white/45">
                   {siteConfig.contact} · {siteConfig.licence}
                 </p>

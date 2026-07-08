@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { differentiators, siteConfig } from "@/lib/site-data";
+import Image from "next/image";
+import { aboutContent, differentiators, siteConfig } from "@/lib/site-data";
+import { siteImages } from "@/lib/site-images";
 import { Reveal } from "./Reveal";
 
 export function AboutTeaser() {
@@ -21,11 +23,10 @@ export function AboutTeaser() {
                   </p>
                 </div>
                 <h2 className="mt-3 font-display text-xl font-bold text-brand-secondary sm:text-2xl">
-                  Built by investors, for investors.
+                  Your personal property partners.
                 </h2>
                 <p className="mt-3 max-w-lg text-sm leading-relaxed text-brand-secondary/65">
-                  Active property investors advising investors — backed by real portfolios, research,
-                  and a nationwide search for the right opportunities.
+                  {aboutContent.intro}
                 </p>
                 <Link
                   href="/about"
@@ -37,12 +38,12 @@ export function AboutTeaser() {
               </div>
 
               <div className="relative min-h-[180px] sm:min-h-[200px]">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage:
-                      "url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1000&q=80')",
-                  }}
+                <Image
+                  src={siteImages.about}
+                  alt="Ether Property Hub buyer's agency"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1280px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-brand-primary/30 mix-blend-multiply" />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-secondary/80 via-transparent to-transparent" />

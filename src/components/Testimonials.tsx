@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { testimonials, siteConfig } from "@/lib/site-data";
+import { siteImages } from "@/lib/site-images";
 import { Reveal } from "./Reveal";
 
 function Stars() {
@@ -20,8 +21,7 @@ export function Testimonials() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80')",
+          backgroundImage: `url('${siteImages.hero}')`,
         }}
       />
       <div className="absolute inset-0 bg-brand-secondary/92" />

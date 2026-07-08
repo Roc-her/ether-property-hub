@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import { siteImages } from "@/lib/site-images";
 
 const markets = [
   { city: "Sydney", state: "NSW" },
@@ -77,8 +78,7 @@ export function Markets() {
                   <div
                     className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity"
                     style={{
-                      backgroundImage:
-                        "url('https://images.unsplash.com/photo-1524666041070-9d87624cde25?w=900&q=80')",
+                      backgroundImage: `url('${siteImages.projects.mildura}')`,
                     }}
                   />
                   <svg

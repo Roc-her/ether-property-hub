@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/lib/site-data";
+import { siteImages } from "@/lib/site-images";
 
 export function Hero() {
   return (
@@ -7,8 +9,7 @@ export function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=80')",
+          backgroundImage: `url('${siteImages.hero}')`,
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-br from-brand-secondary/95 via-brand-primary/88 to-brand-secondary/90" />
@@ -20,25 +21,21 @@ export function Hero() {
           <div className="flex flex-col gap-8 lg:gap-10 lg:pr-6 xl:pr-10">
             <div className="animate-fade-up inline-flex w-fit flex-wrap items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-xs font-medium text-white/90 backdrop-blur-sm">
               <span className="rounded-full bg-brand-accent/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-brand-accent">
-                2026 Finalist
+                5-Star
               </span>
-              Central Coast Local Business Awards
+              {siteConfig.rating}
             </div>
 
-            <h1 className="animate-fade-up delay-100 font-display text-[2.1rem] font-bold leading-[1.3] tracking-normal text-white sm:text-4xl sm:leading-[1.25] lg:text-[2.75rem] xl:text-[3.25rem]">
-              <span className="block">Build wealth through property</span>
-              <span className="mt-1 block bg-gradient-to-r from-brand-accent to-amber-200 bg-clip-text text-transparent sm:mt-2">
-                with conviction.
-              </span>
+            <h1 className="animate-fade-up delay-100 font-display text-[1.85rem] font-bold leading-[1.25] tracking-normal text-white sm:text-4xl sm:leading-[1.2] lg:text-[2.5rem] xl:text-[2.85rem]">
+              {siteConfig.heroHeadline}
             </h1>
 
             <div className="animate-fade-up delay-200 flex max-w-md flex-col gap-4 sm:max-w-lg sm:gap-5">
-              <p className="text-lg leading-[1.8] text-white/85 sm:text-xl sm:leading-[1.75]">
-                Strategy-first buyer&apos;s agency for property investors across Australia.
+              <p className="text-lg leading-[1.8] text-white/90 sm:text-xl sm:leading-[1.75]">
+                {siteConfig.heroSubheadline}
               </p>
               <p className="text-base leading-[1.8] text-white/70 sm:text-lg">
-                Backed by real investing experience and nationwide research — not sales pitches
-                tied to one postcode.
+                {siteConfig.heroDescription}
               </p>
             </div>
 
@@ -51,10 +48,10 @@ export function Hero() {
                 <span className="transition group-hover:translate-x-0.5">→</span>
               </Link>
               <Link
-                href="#process"
+                href="/projects"
                 className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
               >
-                See how it works
+                View client purchases
               </Link>
             </div>
           </div>
@@ -62,12 +59,13 @@ export function Hero() {
           <div className="animate-fade-in delay-500 relative mx-auto w-full max-w-md sm:max-w-lg lg:mx-0 lg:max-w-none">
             <div className="relative lg:ml-auto lg:w-full lg:max-w-[400px] xl:max-w-[440px]">
               <div className="overflow-hidden rounded-[1.75rem] shadow-2xl shadow-black/30 xl:rounded-[2rem]">
-                <div
-                  className="aspect-[4/5] bg-cover bg-center"
-                  style={{
-                    backgroundImage:
-                      "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80')",
-                  }}
+                <Image
+                  src={siteImages.hero}
+                  alt="Ether Property Hub — buyer's agency"
+                  width={440}
+                  height={550}
+                  className="aspect-[4/5] w-full object-cover"
+                  priority
                 />
               </div>
 
@@ -75,12 +73,12 @@ export function Hero() {
                 className="absolute left-3 top-8 hidden w-32 overflow-hidden rounded-2xl border-2 border-white/20 shadow-xl sm:block sm:w-36"
                 style={{ transform: "rotate(-6deg)" }}
               >
-                <div
-                  className="aspect-square bg-cover bg-center"
-                  style={{
-                    backgroundImage:
-                      "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80')",
-                  }}
+                <Image
+                  src={siteImages.projects.kallangur}
+                  alt="Recent client purchase in Kallangur"
+                  width={144}
+                  height={144}
+                  className="aspect-square w-full object-cover"
                 />
               </div>
 
@@ -91,12 +89,12 @@ export function Hero() {
                   </div>
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-wide text-brand-accent">
-                      Outstanding New Business
+                      Off-market access
                     </p>
                     <p className="mt-1 font-display text-sm font-bold text-brand-secondary">
-                      2026 Awards Finalist
+                      {siteConfig.offMarketStat} never advertised
                     </p>
-                    <p className="text-xs text-brand-secondary/55">Central Coast, NSW</p>
+                    <p className="text-xs text-brand-secondary/55">Client purchases nationwide</p>
                   </div>
                 </div>
               </div>
@@ -109,7 +107,7 @@ export function Hero() {
                   {siteConfig.contact.split(" ")[0]}{" "}
                   {siteConfig.contact.split(" ").slice(-1)[0]}
                 </p>
-                <p className="text-xs text-brand-accent">Active property investor</p>
+                <p className="text-xs text-brand-accent">{siteConfig.contactRole}</p>
               </div>
             </div>
           </div>

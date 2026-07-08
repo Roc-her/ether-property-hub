@@ -3,12 +3,13 @@ import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
 import { ServicesGrid } from "@/components/ServicesGrid";
 import { Reveal } from "@/components/Reveal";
-import { siteConfig } from "@/lib/site-data";
+import { aboutContent, siteConfig } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "Services | Ether Property Hub",
+  title: "Services",
   description:
-    "Full buyer's agency support for property investors — strategy, research, sourcing, off-market access, due diligence, and negotiation across Australia.",
+    "Full buyer's agency support — strategy, research, sourcing, off-market access, due diligence, and negotiation across Australia.",
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {
@@ -33,9 +34,8 @@ export default function ServicesPage() {
                 </h1>
 
                 <p className="mt-4 max-w-2xl text-sm leading-[1.7] text-brand-secondary/70 sm:text-base">
-                  Full advocacy or targeted support — scoped to your brief, timeline, and risk
-                  appetite. Every service is buyer-only, research-led, and designed to protect
-                  your investment logic from search through to settlement.
+                  {aboutContent.serviceIntro} Full advocacy or targeted support — scoped to your
+                  brief, timeline, and goals.
                 </p>
 
                 <Link
@@ -63,7 +63,7 @@ export default function ServicesPage() {
                     Discuss your brief with {siteConfig.contact}.
                   </p>
                   <p className="mt-2 text-sm text-white/65">
-                    A complimentary strategy session — no obligation, no sales pressure.
+                    A complimentary consultation — no obligation, no sales pressure.
                   </p>
                 </div>
                 <Link

@@ -1,15 +1,13 @@
-const items = [
-  "Buyer-only representation",
-  "Australia-wide search",
-  "Off-market access",
-  "Fixed transparent fees",
-  "Investment strategy",
-  "Auction bidding",
-  "NSW Licensed Agency",
-  "Invest · Grow · Thrive",
-];
+import { valuePillars } from "@/lib/site-data";
 
 export function Marquee() {
+  const items = [
+    ...valuePillars.map((p) => p.title),
+    `${valuePillars[1].accent} off-market`,
+    "Australia-wide search",
+    "NSW Licensed Agency",
+    "Invest · Grow · Thrive",
+  ];
   const track = [...items, ...items];
 
   return (

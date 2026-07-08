@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { siteConfig, differentiators } from "@/lib/site-data";
+import { siteImages } from "@/lib/site-images";
 import { Reveal } from "./Reveal";
 
 const principleIcons: ReactNode[] = [
@@ -69,12 +71,12 @@ export function Approach() {
                 </div>
 
                 <div className="relative min-h-[200px] sm:min-h-[220px] xl:min-h-[240px]">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{
-                      backgroundImage:
-                        "url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1000&q=80')",
-                    }}
+                  <Image
+                    src={siteImages.about}
+                    alt="Ether Property Hub approach"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1280px) 100vw, 45vw"
                   />
                   <div className="absolute inset-0 bg-brand-primary/25 mix-blend-multiply" />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-secondary via-brand-secondary/20 to-transparent" />

@@ -6,7 +6,7 @@ import { contactImage } from "@/lib/process-images";
 import { Reveal } from "./Reveal";
 
 const benefits = [
-  "No obligation — the first session is always free",
+  "No obligation — your first consultation is always free",
   "Personal follow-up within 24 hours",
   "Buyer-only advice with zero conflicts of interest",
   "Australia-wide coverage across all major markets",
@@ -99,6 +99,7 @@ export function Contact() {
                     Office
                   </p>
                   <p className="mt-1 text-sm text-white/75">{siteConfig.address}</p>
+                  <p className="mt-1 text-sm text-white/60">{siteConfig.secondaryAddress}</p>
                   <p className="mt-1 text-xs text-white/45">{siteConfig.licence}</p>
                 </div>
               </div>
@@ -118,7 +119,7 @@ export function Contact() {
                     </h3>
                     <p className="mt-3 max-w-sm text-sm leading-relaxed text-brand-secondary/70">
                       Your enquiry has been received. {siteConfig.contact} will be in touch within
-                      24 hours to arrange your free strategy session.
+                      24 hours to arrange your free consultation.
                     </p>
                   </div>
                 ) : (

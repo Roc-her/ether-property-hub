@@ -7,6 +7,7 @@ import { Services } from "@/components/Services";
 import { Process } from "@/components/Process";
 import { ReviewsTeaser } from "@/components/ReviewsTeaser";
 import { FAQTeaser } from "@/components/FAQTeaser";
+import { ProjectsTeaser } from "@/components/ProjectsTeaser";
 import { ContactTeaser } from "@/components/ContactTeaser";
 import { Footer } from "@/components/Footer";
 
@@ -26,6 +27,7 @@ export default function Home() {
         <TrustBar />
         <AboutTeaser />
         <Services />
+        <ProjectsTeaser />
         <Process />
         <ReviewsTeaser />
         <FAQTeaser />
