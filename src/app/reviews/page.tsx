@@ -1,42 +1,37 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 import { PageShell } from "@/components/PageShell";
+import { PageHero } from "@/components/PageHero";
 import { Testimonials } from "@/components/Testimonials";
-import { Reveal } from "@/components/Reveal";
-import { siteConfig } from "@/lib/site-data";
+import { CTABand } from "@/components/CTABand";
+import { googleReviewsSummary } from "@/lib/reviews-data";
+import { pageHeroLeads } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Client Reviews | Ether Property Hub",
+export const metadata = pageMetadata({
+  title: "Client Reviews",
   description:
-    "Read what clients say about working with Amir Thapa Magaranti and Ether Property Hub.",
-};
+    `Read all ${googleReviewsSummary.count} Google reviews from clients of Amir Thapa Magaranti and Ether Property Hub — Australia's 5-star rated buyer's agency.`,
+  path: "/reviews",
+});
 
 export default function ReviewsPage() {
   return (
     <PageShell>
+      <PageHero
+        eyebrow="Client reviews"
+        title={
+          <>
+            What our clients{" "}
+            <span className="serif-italic text-gold-soft">say.</span>
+          </>
+        }
+        description={pageHeroLeads.reviews}
+      />
       <Testimonials />
-
-      <section className="pb-12 lg:pb-16">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <Reveal>
-            <div className="overflow-hidden border-2 border-brand-primary/15 bg-brand-secondary text-white">
-              <div className="h-1 bg-gradient-to-r from-brand-accent via-amber-400/80 to-brand-accent" />
-              <div className="flex flex-col gap-4 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-7">
-                <p className="font-display text-xl font-bold sm:text-2xl">
-                  Ready for the same experience?
-                </p>
-                <Link
-                  href="/contact"
-                  className="inline-flex shrink-0 items-center gap-2 bg-brand-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-accent/90"
-                >
-                  {siteConfig.cta}
-                  <span aria-hidden="true">→</span>
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <CTABand
+        eyebrow="Get in touch"
+        title="Book a free consultation"
+        description="Arrange a free discovery call to discuss your property goals."
+      />
     </PageShell>
   );
 }

@@ -1,93 +1,65 @@
-import Link from "next/link";
 import Image from "next/image";
-import { aboutContent, differentiators, siteConfig } from "@/lib/site-data";
+import { aboutContent, siteConfig } from "@/lib/site-data";
 import { siteImages } from "@/lib/site-images";
+import { Container } from "./ui/Container";
+import { Eyebrow } from "./ui/SectionHeading";
+import { Button } from "./ui/Button";
 import { Reveal } from "./Reveal";
 
 export function AboutTeaser() {
-  const preview = differentiators.slice(0, 2);
-
   return (
-    <section className="bg-brand-cream pb-12 pt-10 lg:pb-16 lg:pt-14">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <Reveal>
-          <div className="overflow-hidden border-2 border-brand-primary/15 bg-brand-surface shadow-[0_16px_40px_-24px_rgba(15,75,112,0.3)]">
-            <div className="h-1 bg-brand-accent" />
+    <section className="section-cream section-pad">
+      <Container>
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <Reveal className="order-2 lg:order-1">
+            <Eyebrow>About us</Eyebrow>
+            <h2 className="premium-h2 mt-5 text-balance text-ink">
+              Your personal property partners.
+            </h2>
+            <p className="premium-lead mt-5">{aboutContent.intro}</p>
+            <p className="mt-4 text-[15px] leading-[1.85] text-ink-soft">{aboutContent.body[0]}</p>
 
-            <div className="grid xl:grid-cols-[1.05fr_0.95fr]">
-              <div className="border-b border-brand-primary/10 p-5 sm:p-6 xl:border-b-0 xl:border-r xl:p-7">
-                <div className="flex items-center gap-2.5">
-                  <span className="inline-block h-6 w-1 bg-brand-accent" />
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-accent">
-                    About us
-                  </p>
-                </div>
-                <h2 className="mt-3 font-display text-xl font-bold text-brand-secondary sm:text-2xl">
-                  Your personal property partners.
-                </h2>
-                <p className="mt-3 max-w-lg text-sm leading-relaxed text-brand-secondary/65">
-                  {aboutContent.intro}
-                </p>
-                <Link
-                  href="/about"
-                  className="mt-5 inline-flex items-center gap-2 border border-brand-primary/20 px-4 py-2 text-xs font-semibold text-brand-primary transition hover:border-brand-primary hover:bg-brand-cream sm:text-sm"
-                >
-                  Learn about us
-                  <span aria-hidden="true">→</span>
-                </Link>
-              </div>
+            <blockquote className="pull-quote mt-8 max-w-xl">{aboutContent.closing}</blockquote>
 
-              <div className="relative min-h-[180px] sm:min-h-[200px]">
+            <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <Button href="/about" variant="outline" size="md">
+                Read our full story
+              </Button>
+              <Button href="/contact" variant="primary" size="md">
+                {siteConfig.cta}
+                <span aria-hidden="true">→</span>
+              </Button>
+            </div>
+          </Reveal>
+
+          <Reveal delay={120} className="order-1 lg:order-2">
+            <div className="relative">
+              <div
+                aria-hidden="true"
+                className="absolute -left-4 -top-4 bottom-8 hidden w-full rounded-[4px] border border-gold/40 lg:block"
+              />
+              <div className="img-frame relative overflow-hidden rounded-[4px]">
                 <Image
                   src={siteImages.about}
-                  alt="Ether Property Hub buyer's agency"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1280px) 100vw, 50vw"
+                  alt="Ether Property Hub — about us"
+                  width={640}
+                  height={800}
+                  className="img-warm aspect-[4/5] w-full object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-brand-primary/30 mix-blend-multiply" />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-secondary/80 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-brand-secondary/90 px-4 py-3">
-                  <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-brand-accent">
-                    2026 Awards Finalist
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent p-6">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-soft">
+                    {siteConfig.rating}
                   </p>
-                  <p className="mt-1 font-display text-sm font-bold text-white">
-                    Outstanding New Business — Central Coast
+                  <p className="mt-1.5 font-display text-lg font-semibold leading-snug text-white">
+                    Gosford, NSW · Australia-wide
                   </p>
                 </div>
               </div>
             </div>
-
-            <div className="grid divide-y divide-brand-primary/10 border-t border-brand-primary/10 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
-              {preview.map((item) => (
-                <div key={item.title} className="p-5 sm:p-6">
-                  <h3 className="font-display text-base font-bold text-brand-secondary">{item.title}</h3>
-                  <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-brand-secondary/60 sm:text-sm">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="grid border-t border-brand-primary/10 sm:grid-cols-2">
-              <Link
-                href="/about"
-                className="flex items-center justify-between gap-4 border-b border-brand-primary/10 bg-brand-primary px-5 py-4 text-sm font-semibold text-white transition hover:bg-brand-secondary sm:border-b-0 sm:border-r sm:px-6"
-              >
-                <span>Read our full story</span>
-                <span aria-hidden="true">→</span>
-              </Link>
-              <Link
-                href="/contact"
-                className="flex items-center justify-between gap-4 bg-brand-accent px-5 py-4 text-sm font-semibold text-white transition hover:bg-brand-accent/90 sm:px-6"
-              >
-                <span>{siteConfig.cta}</span>
-                <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-          </div>
-        </Reveal>
-      </div>
+          </Reveal>
+        </div>
+      </Container>
     </section>
   );
 }

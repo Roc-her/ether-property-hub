@@ -1,162 +1,108 @@
 import Link from "next/link";
 import { LogoWordmark } from "./Logo";
-import { siteConfig } from "@/lib/site-data";
+import { siteConfig, socialLinks } from "@/lib/site-data";
 import { mainNavLinks } from "@/lib/navigation";
+import { SocialIcon } from "@/lib/social-icons";
 
 const serviceLinks = [
-  { label: "View all services", href: "/services" },
-  { label: "Investment Strategy", href: "/services#strategy" },
-  { label: "Property Research", href: "/services#research" },
-  { label: "Property Sourcing", href: "/services#sourcing" },
-  { label: "Due Diligence", href: "/services#diligence" },
-  { label: "Negotiation & Auctions", href: "/services#negotiation" },
+  { label: "Investment strategy", href: "/services" },
+  { label: "Property research", href: "/services" },
+  { label: "Property sourcing", href: "/services" },
+  { label: "Off-market access", href: "/services" },
+  { label: "Negotiation & auctions", href: "/services" },
 ] as const;
 
 export function Footer() {
   return (
-    <footer className="bg-brand-secondary text-white">
-      <div className="h-1 bg-gradient-to-r from-brand-accent via-amber-400/80 to-brand-accent" />
+    <footer className="relative overflow-hidden bg-navy-deep text-white">
+      <div className="h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
 
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="flex flex-col gap-4 border-b border-white/10 py-8 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto w-full max-w-[1240px] px-5 py-14 md:px-8 md:py-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,2fr)]">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-accent">
-              {siteConfig.tagline}
-            </p>
-            <p className="mt-1 font-display text-lg font-bold sm:text-xl">
-              {siteConfig.rating}
-            </p>
-          </div>
-          <Link
-            href="/contact"
-            className="inline-flex shrink-0 items-center gap-2 bg-brand-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-accent/90"
-          >
-            {siteConfig.cta}
-            <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-
-        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-4">
-            <div className="[&_.font-display]:text-white [&_.text-brand-primary]:text-white">
-              <LogoWordmark />
-            </div>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/65">
+            <LogoWordmark height={88} />
+            <p className="mt-6 max-w-sm text-[13px] leading-relaxed text-white/60">
               {siteConfig.description}
             </p>
           </div>
 
-          <div className="lg:col-span-2">
-            <h3 className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-accent">
-              <span className="inline-block h-4 w-0.5 bg-brand-accent" />
-              Services
-            </h3>
-            <ul className="mt-4 space-y-2.5">
-              {serviceLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/65 transition hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:col-span-2">
-            <h3 className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-accent">
-              <span className="inline-block h-4 w-0.5 bg-brand-accent" />
-              Company
-            </h3>
-            <ul className="mt-4 space-y-2.5">
-              {mainNavLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/65 transition hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 flex flex-wrap gap-2">
-              <a
-                href={siteConfig.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-white/15 px-3 py-2 text-xs text-white/70 transition hover:border-brand-accent/40 hover:text-brand-accent"
-              >
-                Facebook
-                <span aria-hidden="true">↗</span>
-              </a>
-              <a
-                href={siteConfig.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-white/15 px-3 py-2 text-xs text-white/70 transition hover:border-brand-accent/40 hover:text-brand-accent"
-              >
-                Instagram
-                <span aria-hidden="true">↗</span>
-              </a>
-              <a
-                href={siteConfig.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-white/15 px-3 py-2 text-xs text-white/70 transition hover:border-brand-accent/40 hover:text-brand-accent"
-              >
-                TikTok
-                <span aria-hidden="true">↗</span>
-              </a>
+          <div className="grid gap-10 sm:grid-cols-3">
+            <div>
+              <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-soft">
+                Services
+              </h3>
+              <ul className="mt-4 space-y-2.5">
+                {serviceLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link href={link.href} className="text-[12.5px] text-white/68 transition-colors hover:text-white">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="mt-2 text-xs text-white/40">{siteConfig.socialHandle}</p>
-          </div>
 
-          <div className="lg:col-span-4">
-            <h3 className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-accent">
-              <span className="inline-block h-4 w-0.5 bg-brand-accent" />
-              Contact
-            </h3>
-            <div className="mt-4 grid gap-px overflow-hidden border border-white/10 bg-white/10">
-              <div className="bg-brand-secondary px-4 py-3.5">
-                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-accent">
-                  Email
-                </p>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="mt-1 block text-sm text-white/80 transition hover:text-brand-accent"
-                >
-                  {siteConfig.email}
-                </a>
-              </div>
-              <div className="bg-brand-secondary px-4 py-3.5">
-                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-accent">
-                  Phone
-                </p>
-                <a
-                  href={`tel:${siteConfig.phoneRaw}`}
-                  className="mt-1 block text-sm text-white/80 transition hover:text-brand-accent"
-                >
-                  {siteConfig.phone}
-                </a>
-              </div>
-              <div className="bg-brand-secondary px-4 py-3.5">
-                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-accent">
-                  Office
-                </p>
-                <p className="mt-1 text-sm text-white/70">{siteConfig.address}</p>
-                <p className="mt-1 text-sm text-white/55">{siteConfig.secondaryAddress}</p>
-                <p className="mt-1 text-xs text-white/45">
-                  {siteConfig.contact} · {siteConfig.licence}
-                </p>
+            <div>
+              <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-soft">
+                Company
+              </h3>
+              <ul className="mt-4 space-y-2.5">
+                {mainNavLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link href={link.href} className="text-[12.5px] text-white/68 transition-colors hover:text-white">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-soft">
+                Contact
+              </h3>
+              <ul className="mt-4 space-y-3 text-[12.5px] text-white/68">
+                <li>
+                  <a href={`mailto:${siteConfig.email}`} className="transition-colors hover:text-white">
+                    {siteConfig.email}
+                  </a>
+                </li>
+                <li>
+                  <a href={`tel:${siteConfig.phoneRaw}`} className="transition-colors hover:text-white">
+                    {siteConfig.phone}
+                  </a>
+                </li>
+                <li className="leading-relaxed text-white/55">
+                  {siteConfig.address}
+                  <br />
+                  {siteConfig.secondaryAddress}
+                </li>
+              </ul>
+
+              <div className="mt-6">
+                <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-soft">
+                  Follow us
+                </h3>
+                <div className="mt-3 flex flex-wrap gap-2.5">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/[0.03] text-white/70 transition-colors hover:border-gold/50 hover:text-gold-soft"
+                    >
+                      <SocialIcon icon={social.icon} className="h-4 w-4" />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="grid gap-4 border-t border-white/10 py-8 text-xs leading-relaxed text-white/45 md:grid-cols-2">
+        <div className="mt-14 grid gap-4 border-t border-white/10 pt-8 text-[11.5px] leading-relaxed text-white/42 md:grid-cols-2">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved. Licensed Real
             Estate Agency · {siteConfig.licence}

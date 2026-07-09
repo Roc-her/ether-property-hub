@@ -1,39 +1,38 @@
-import { Header } from "@/components/Header";
+import type { Metadata } from "next";
+import { PageShell } from "@/components/PageShell";
 import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
 import { TrustBar } from "@/components/TrustBar";
 import { AboutTeaser } from "@/components/AboutTeaser";
+import { ClientTypes } from "@/components/ClientTypes";
 import { Services } from "@/components/Services";
-import { Process } from "@/components/Process";
+import { ProjectsTeaser } from "@/components/ProjectsTeaser";
+import { TeamTeaser } from "@/components/TeamTeaser";
 import { ReviewsTeaser } from "@/components/ReviewsTeaser";
 import { FAQTeaser } from "@/components/FAQTeaser";
-import { ProjectsTeaser } from "@/components/ProjectsTeaser";
 import { ContactTeaser } from "@/components/ContactTeaser";
-import { Footer } from "@/components/Footer";
+import { siteConfig } from "@/lib/site-data";
+
+export const metadata: Metadata = {
+  title: `${siteConfig.name} | ${siteConfig.rating}`,
+  description: siteConfig.description,
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
-    <>
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand-accent focus:px-4 focus:py-2 focus:text-white"
-      >
-        Skip to content
-      </a>
-      <Header />
-      <main id="main" className="overflow-x-hidden">
-        <Hero />
-        <Marquee />
-        <TrustBar />
-        <AboutTeaser />
-        <Services />
-        <ProjectsTeaser />
-        <Process />
-        <ReviewsTeaser />
-        <FAQTeaser />
-        <ContactTeaser />
-      </main>
-      <Footer />
-    </>
+    <PageShell>
+      <Hero />
+      <Marquee />
+      <TrustBar />
+      <AboutTeaser />
+      <ClientTypes />
+      <Services />
+      <ProjectsTeaser />
+      <TeamTeaser />
+      <ReviewsTeaser />
+      <FAQTeaser />
+      <ContactTeaser />
+    </PageShell>
   );
 }

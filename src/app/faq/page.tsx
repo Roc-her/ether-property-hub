@@ -1,40 +1,35 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 import { PageShell } from "@/components/PageShell";
+import { PageHero } from "@/components/PageHero";
 import { FAQ } from "@/components/FAQ";
-import { Reveal } from "@/components/Reveal";
-import { siteConfig } from "@/lib/site-data";
+import { CTABand } from "@/components/CTABand";
+import { pageHeroLeads } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "FAQ | Ether Property Hub",
+export const metadata = pageMetadata({
+  title: "FAQ",
   description:
     "Frequently asked questions about buyer's agency, fees, coverage, and working with Ether Property Hub.",
-};
+  path: "/faq",
+});
 
 export default function FAQPage() {
   return (
     <PageShell>
+      <PageHero
+        eyebrow="FAQ"
+        title={
+          <>
+            Common <span className="serif-italic text-gold-soft">questions.</span>
+          </>
+        }
+        description={pageHeroLeads.faq}
+      />
       <FAQ />
-
-      <section className="pb-12 lg:pb-16">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <Reveal>
-            <div className="overflow-hidden border-2 border-brand-primary/15 bg-brand-secondary text-white">
-              <div className="h-1 bg-gradient-to-r from-brand-accent via-amber-400/80 to-brand-accent" />
-              <div className="flex flex-col gap-4 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-7">
-                <p className="font-display text-xl font-bold sm:text-2xl">Still have questions?</p>
-                <Link
-                  href="/contact"
-                  className="inline-flex shrink-0 items-center gap-2 bg-brand-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-accent/90"
-                >
-                  {siteConfig.cta}
-                  <span aria-hidden="true">→</span>
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <CTABand
+        eyebrow="Get in touch"
+        title="Book a free consultation"
+        description="Arrange a free discovery call to discuss your property goals."
+      />
     </PageShell>
   );
 }

@@ -1,4 +1,6 @@
-import { siteConfig, services, team, faqs } from "@/lib/site-data";
+import { siteConfig, services, team, faqs, socialLinks } from "@/lib/site-data";
+import { googleReviews, googleReviewsSummary } from "@/lib/reviews-data";
+import { siteImages } from "@/lib/site-images";
 
 export function JsonLd() {
   const organization = {
@@ -9,15 +11,25 @@ export function JsonLd() {
     url: siteConfig.url,
     telephone: siteConfig.phone,
     email: siteConfig.email,
-    image: `${siteConfig.url}/images/logo.jpg`,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "60 Mooramba Ave",
-      addressLocality: "North Gosford",
-      addressRegion: "NSW",
-      postalCode: "2250",
-      addressCountry: "AU",
-    },
+    image: `${siteConfig.url}${siteImages.logo}`,
+    address: [
+      {
+        "@type": "PostalAddress",
+        streetAddress: "60 Mooramba Ave",
+        addressLocality: "North Gosford",
+        addressRegion: "NSW",
+        postalCode: "2250",
+        addressCountry: "AU",
+      },
+      {
+        "@type": "PostalAddress",
+        streetAddress: "12/71-73 Faunce Street West",
+        addressLocality: "Gosford",
+        addressRegion: "NSW",
+        postalCode: "2250",
+        addressCountry: "AU",
+      },
+    ],
     areaServed: {
       "@type": "Country",
       name: "Australia",
@@ -26,14 +38,16 @@ export function JsonLd() {
       "@type": "Person",
       name: siteConfig.contact,
       jobTitle: siteConfig.contactRole,
+      image: `${siteConfig.url}${siteImages.amir}`,
     },
-    sameAs: [siteConfig.facebook, siteConfig.instagram, siteConfig.tiktok],
+    sameAs: socialLinks.map((social) => social.href),
     knowsAbout: services.map((s) => s.title),
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "5",
-      bestRating: "5",
-      ratingCount: "2",
+      ratingValue: googleReviewsSummary.rating,
+      reviewCount: googleReviewsSummary.count,
+      bestRating: 5,
+      worstRating: 1,
     },
   };
 
@@ -67,12 +81,34 @@ export function JsonLd() {
     "@type": "Person",
     name: team[0].name,
     jobTitle: team[0].role,
+    image: `${siteConfig.url}${siteImages.amir}`,
     worksFor: {
       "@type": "Organization",
       name: siteConfig.name,
     },
     description: team[0].bio,
   };
+
+  const reviews = googleReviews.map((t) => ({
+    "@context": "https://schema.org",
+    "@type": "Review",
+    author: {
+      "@type": "Person",
+      name: t.author,
+    },
+    reviewBody: t.quote,
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: 5,
+      bestRating: 5,
+    },
+    datePublished: t.date,
+    url: t.googleUrl,
+    itemReviewed: {
+      "@type": "RealEstateAgent",
+      name: siteConfig.name,
+    },
+  }));
 
   return (
     <>
@@ -92,6 +128,13 @@ export function JsonLd() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
       />
+      {reviews.map((review) => (
+        <script
+          key={review.url}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(review) }}
+        />
+      ))}
     </>
   );
 }

@@ -1,19 +1,24 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
+import { IntroOverlay } from "@/components/IntroOverlay";
 import { siteConfig } from "@/lib/site-data";
+import { siteImages } from "@/lib/site-images";
 import "./globals.css";
 
 const bodyFont = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 const displayFont = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -26,14 +31,14 @@ export const metadata: Metadata = {
   keywords: [
     "buyer's agent",
     "buyer's agency",
-    "property investment",
-    "Australia",
+    "buyers agent Australia",
+    "buyers agent Gosford",
+    "buyers agent Central Coast",
     "off-market property",
-    "Central Coast NSW",
-    "Gosford",
+    "property investment",
     "first home buyer",
-    "property investor",
     "Amir Thapa Magaranti",
+    "Ether Property Hub",
   ],
   authors: [{ name: siteConfig.contact, url: siteConfig.url }],
   creator: siteConfig.name,
@@ -45,17 +50,26 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    title: `${siteConfig.name} | ${siteConfig.rating}`,
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
     locale: "en_AU",
     type: "website",
+    images: [
+      {
+        url: siteImages.hero,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — buyer's agency Australia`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} | ${siteConfig.rating}`,
     description: siteConfig.description,
+    images: [siteImages.hero],
   },
   robots: {
     index: true,
@@ -78,6 +92,7 @@ export default function RootLayout({
     <html lang="en-AU" className={`${bodyFont.variable} ${displayFont.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
         <JsonLd />
+        <IntroOverlay />
         {children}
       </body>
     </html>

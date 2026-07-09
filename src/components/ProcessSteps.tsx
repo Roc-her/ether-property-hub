@@ -1,57 +1,47 @@
+import Image from "next/image";
 import { processSteps } from "@/lib/site-data";
 import { processStepImages } from "@/lib/process-images";
+import { Container } from "./ui/Container";
+import { Reveal } from "./Reveal";
 
 export function ProcessSteps() {
   return (
-    <div className="bg-brand-surface px-5 py-8 sm:px-8 sm:py-10">
-      <ol className="relative mx-auto max-w-3xl">
-        {processSteps.map((step, index) => (
-          <li
-            key={step.step}
-            id={`step-${step.step}`}
-            className="relative pb-12 last:pb-0"
-          >
-            {index < processSteps.length - 1 && (
-              <span
-                aria-hidden="true"
-                className="absolute left-5 top-14 hidden h-[calc(100%-2rem)] w-px bg-brand-accent/30 sm:block"
-              />
-            )}
-
-            <div className="flex flex-col gap-5 sm:flex-row sm:gap-6">
-              <div className="flex items-start gap-4 sm:w-28 sm:shrink-0 sm:flex-col sm:items-center sm:gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-brand-accent bg-brand-cream font-display text-base font-bold text-brand-primary">
-                  {step.step}
-                </div>
-                <p className="pt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-accent sm:pt-0 sm:text-center">
-                  Step {step.step}
-                </p>
-              </div>
-
-              <article className="min-w-0 flex-1 overflow-hidden border border-brand-primary/10 bg-brand-cream/40">
-                <div className="grid sm:grid-cols-[140px_1fr]">
-                  <div className="relative min-h-[120px] bg-brand-secondary sm:min-h-full">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url('${processStepImages[index]}')` }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/55 via-brand-primary/25 to-brand-secondary/40" />
-                  </div>
-
-                  <div className="p-5 sm:p-6">
-                    <h3 className="font-display text-xl font-bold text-brand-secondary sm:text-2xl">
+    <section className="section-ivory section-pad">
+      <Container>
+        <div className="flex flex-col gap-14">
+          {processSteps.map((step, index) => {
+            const flip = index % 2 === 1;
+            return (
+              <Reveal key={step.step} delay={index * 60}>
+                <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+                  <div className={flip ? "lg:order-2" : ""}>
+                    <span className="step-numeral">{step.step}</span>
+                    <div className="mt-4 h-px w-16 bg-gold/50" />
+                    <h3 className="mt-6 font-display text-2xl font-semibold text-ink md:text-3xl">
                       {step.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-[1.7] text-brand-secondary/70">
+                    <p className="mt-4 text-[15px] leading-[1.8] text-ink-soft">
                       {step.description}
                     </p>
                   </div>
+                  <div className={flip ? "lg:order-1" : ""}>
+                    <div className="img-frame relative overflow-hidden rounded-[8px]">
+                      <Image
+                        src={processStepImages[index]}
+                        alt={step.title}
+                        width={720}
+                        height={480}
+                        className="img-warm aspect-[3/2] w-full object-cover"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </article>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </Container>
+    </section>
   );
 }

@@ -5,109 +5,71 @@ import { siteImages } from "@/lib/site-images";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-brand-secondary">
+    <section className="section-deep relative isolate overflow-hidden">
+      <div className="hero-grid absolute inset-0 opacity-40" aria-hidden="true" />
+      <div className="grain absolute inset-0" aria-hidden="true" />
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('${siteImages.hero}')`,
-        }}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-secondary/95 via-brand-primary/88 to-brand-secondary/90" />
-      <div className="hero-grid absolute inset-0 opacity-30" />
-      <div className="grain absolute inset-0" />
 
-      <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-28 sm:pb-20 sm:pt-32 lg:px-10 lg:pb-24 lg:pt-36">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14 xl:grid-cols-[1.1fr_0.9fr] xl:gap-16">
-          <div className="flex flex-col gap-8 lg:gap-10 lg:pr-6 xl:pr-10">
-            <div className="animate-fade-up inline-flex w-fit flex-wrap items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-xs font-medium text-white/90 backdrop-blur-sm">
-              <span className="rounded-full bg-brand-accent/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-brand-accent">
-                5-Star
-              </span>
-              {siteConfig.rating}
+      <div className="relative mx-auto flex min-h-[100svh] max-w-[1240px] items-center px-5 pb-20 pt-32 md:px-8 md:pt-36">
+        <div className="grid w-full items-center gap-12 lg:grid-cols-[minmax(0,1fr)_min(42vw,440px)] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_460px]">
+          <div className="flex flex-col">
+            <div className="rise flex items-center gap-3">
+              <span className="gold-rule" />
+              <span className="eyebrow text-gold/90">{siteConfig.rating}</span>
             </div>
 
-            <h1 className="animate-fade-up delay-100 font-display text-[1.85rem] font-bold leading-[1.25] tracking-normal text-white sm:text-4xl sm:leading-[1.2] lg:text-[2.5rem] xl:text-[2.85rem]">
-              {siteConfig.heroHeadline}
+            <h1 className="rise delay-100 display-hero mt-6 max-w-xl text-balance text-white">
+              {siteConfig.heroHeadline}{" "}
+              <span className="serif-italic text-gold-soft">{siteConfig.heroHeadlineAccent}</span>
             </h1>
 
-            <div className="animate-fade-up delay-200 flex max-w-md flex-col gap-4 sm:max-w-lg sm:gap-5">
-              <p className="text-lg leading-[1.8] text-white/90 sm:text-xl sm:leading-[1.75]">
-                {siteConfig.heroSubheadline}
-              </p>
-              <p className="text-base leading-[1.8] text-white/70 sm:text-lg">
-                {siteConfig.heroDescription}
-              </p>
+            <div className="rise delay-200 mt-7 max-w-xl space-y-4">
+              <p className="text-lg leading-relaxed text-white/85">{siteConfig.heroSubheadline}.</p>
+              <p className="text-[15px] leading-[1.8] text-white/62">{siteConfig.heroDescription}</p>
             </div>
 
-            <div className="animate-fade-up delay-300 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 text-sm font-semibold text-white shadow-xl shadow-black/20 transition hover:bg-brand-accent/90"
-              >
+            <div className="rise delay-300 mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link href="/contact" className="btn-cta h-12 px-8 text-[11.5px]">
                 {siteConfig.cta}
-                <span className="transition group-hover:translate-x-0.5">→</span>
+                <span
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover/btn:translate-x-0.5"
+                >
+                  →
+                </span>
               </Link>
-              <Link
-                href="/projects"
-                className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
-              >
+              <Link href="/projects" className="btn-ghost-light h-12 px-8 text-[11.5px]">
                 View client purchases
               </Link>
             </div>
           </div>
 
-          <div className="animate-fade-in delay-500 relative mx-auto w-full max-w-md sm:max-w-lg lg:mx-0 lg:max-w-none">
-            <div className="relative lg:ml-auto lg:w-full lg:max-w-[400px] xl:max-w-[440px]">
-              <div className="overflow-hidden rounded-[1.75rem] shadow-2xl shadow-black/30 xl:rounded-[2rem]">
-                <Image
-                  src={siteImages.hero}
-                  alt="Ether Property Hub — buyer's agency"
-                  width={440}
-                  height={550}
-                  className="aspect-[4/5] w-full object-cover"
-                  priority
-                />
-              </div>
-
+          <div className="fade delay-200 relative mx-auto w-full max-w-sm lg:mx-0 lg:max-w-none">
+            <div className="relative">
               <div
-                className="absolute left-3 top-8 hidden w-32 overflow-hidden rounded-2xl border-2 border-white/20 shadow-xl sm:block sm:w-36"
-                style={{ transform: "rotate(-6deg)" }}
-              >
+                aria-hidden="true"
+                className="absolute -bottom-4 -right-4 top-8 hidden w-full rounded-[4px] border border-gold/40 lg:block"
+              />
+              <div className="img-frame relative overflow-hidden rounded-[4px] border-white/10 shadow-[0_28px_90px_-28px_rgba(0,0,0,0.85)]">
                 <Image
-                  src={siteImages.projects.kallangur}
-                  alt="Recent client purchase in Kallangur"
-                  width={144}
-                  height={144}
-                  className="aspect-square w-full object-cover"
+                  src={siteImages.amir}
+                  alt={`${siteConfig.contact} — ${siteConfig.contactRole}`}
+                  width={819}
+                  height={1024}
+                  priority
+                  className="img-warm kenburns aspect-[4/5] w-full object-cover object-top"
                 />
-              </div>
-
-              <div className="absolute bottom-4 left-3 hidden max-w-[230px] rounded-2xl border border-white/15 bg-brand-surface/95 p-4 shadow-2xl sm:block sm:p-5">
-                <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-primary text-white">
-                    ★
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-wide text-brand-accent">
-                      Off-market access
-                    </p>
-                    <p className="mt-1 font-display text-sm font-bold text-brand-secondary">
-                      {siteConfig.offMarketStat} never advertised
-                    </p>
-                    <p className="text-xs text-brand-secondary/55">Client purchases nationwide</p>
-                  </div>
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-5">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-soft">
+                    {siteConfig.contactRole}
+                  </p>
+                  <p className="mt-1 font-display text-lg font-semibold text-white">
+                    {siteConfig.contact}
+                  </p>
                 </div>
-              </div>
-
-              <div className="absolute right-3 top-4 hidden rounded-2xl border border-white/15 bg-brand-primary/90 px-4 py-3 shadow-xl sm:block sm:px-5 sm:py-4">
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-white/50">
-                  Led by
-                </p>
-                <p className="mt-1 font-display text-base font-bold text-white">
-                  {siteConfig.contact.split(" ")[0]}{" "}
-                  {siteConfig.contact.split(" ").slice(-1)[0]}
-                </p>
-                <p className="text-xs text-brand-accent">{siteConfig.contactRole}</p>
               </div>
             </div>
           </div>
