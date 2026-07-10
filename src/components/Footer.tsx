@@ -74,8 +74,6 @@ export function Footer() {
                 </li>
                 <li className="leading-relaxed text-white/55">
                   {siteConfig.address}
-                  <br />
-                  {siteConfig.secondaryAddress}
                 </li>
               </ul>
 

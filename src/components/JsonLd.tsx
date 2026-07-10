@@ -12,24 +12,14 @@ export function JsonLd() {
     telephone: siteConfig.phone,
     email: siteConfig.email,
     image: `${siteConfig.url}${siteImages.logo}`,
-    address: [
-      {
-        "@type": "PostalAddress",
-        streetAddress: "60 Mooramba Ave",
-        addressLocality: "North Gosford",
-        addressRegion: "NSW",
-        postalCode: "2250",
-        addressCountry: "AU",
-      },
-      {
-        "@type": "PostalAddress",
-        streetAddress: "12/71-73 Faunce Street West",
-        addressLocality: "Gosford",
-        addressRegion: "NSW",
-        postalCode: "2250",
-        addressCountry: "AU",
-      },
-    ],
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "60 Mooramba Ave",
+      addressLocality: "North Gosford",
+      addressRegion: "NSW",
+      postalCode: "2250",
+      addressCountry: "AU",
+    },
     areaServed: {
       "@type": "Country",
       name: "Australia",

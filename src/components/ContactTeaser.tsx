@@ -48,9 +48,6 @@ export function ContactTeaser() {
                 <span className="mt-1 block text-[14px] leading-relaxed text-white/70">
                   {siteConfig.address}
                 </span>
-                <span className="mt-2 block text-[14px] leading-relaxed text-white/55">
-                  {siteConfig.secondaryAddress}
-                </span>
               </div>
 
               <div className="mt-6 flex flex-col gap-3">

@@ -57,9 +57,6 @@ export function Contact({ hideTitle = false }: { hideTitle?: boolean }) {
                 <span className="mt-1 block text-[14px] leading-relaxed text-ink-soft">
                   {siteConfig.address}
                 </span>
-                <span className="mt-1 block text-[14px] leading-relaxed text-ink-soft">
-                  {siteConfig.secondaryAddress}
-                </span>
                 <span className="mt-1 block text-[13px] text-ink-muted">{siteConfig.licence}</span>
               </div>
             </div>
