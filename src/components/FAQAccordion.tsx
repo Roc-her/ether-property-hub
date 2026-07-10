@@ -46,7 +46,7 @@ export function FAQAccordion({
             key={faq.question}
             className={`group overflow-hidden rounded-[12px] border transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
               isOpen
-                ? "border-gold/30 bg-bg-pure shadow-[0_18px_48px_-28px_rgb(29_56_58/0.22)]"
+                ? "border-gold/30 bg-bg-pure shadow-[0_18px_48px_-28px_rgb(11_28_51/0.22)]"
                 : "border-line/90 bg-bg-pure/75 hover:border-line-strong hover:bg-bg-pure hover:shadow-sm"
             }`}
           >

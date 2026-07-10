@@ -37,9 +37,9 @@ export function Header() {
       }`}
       style={{
         background:
-          "linear-gradient(90deg, rgb(16 34 38 / 0.97) 0%, rgb(12 26 29 / 0.97) 40%, rgb(14 32 35 / 0.97) 100%)",
+          "linear-gradient(90deg, rgb(11 28 51 / 0.97) 0%, rgb(8 22 40 / 0.97) 40%, rgb(7 21 37 / 0.97) 100%)",
         backdropFilter: "blur(10px)",
-        borderBottom: "1px solid rgb(184 134 11 / 0.22)",
+        borderBottom: "1px solid rgb(43 154 232 / 0.28)",
       }}
     >
       <div className="mx-auto flex h-[76px] max-w-[1240px] items-center justify-between px-5 md:px-8">
