@@ -1,6 +1,6 @@
 import { siteConfig } from "@/lib/site-data";
 import { Container } from "./ui/Container";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import { Reveal } from "./Reveal";
 
 export function CTABand({

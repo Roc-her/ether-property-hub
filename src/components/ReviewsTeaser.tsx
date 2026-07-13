@@ -2,7 +2,7 @@ import { testimonials } from "@/lib/site-data";
 import { googleReviewsSummary, googleReviewsUrl } from "@/lib/reviews-data";
 import { Container } from "./ui/Container";
 import { SectionHeading } from "./ui/SectionHeading";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import { ReviewCard } from "./ReviewCard";
 import { Reveal } from "./Reveal";
 

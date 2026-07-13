@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { team, siteConfig } from "@/lib/site-data";
 import { siteImages } from "@/lib/site-images";
 import { Container } from "./ui/Container";

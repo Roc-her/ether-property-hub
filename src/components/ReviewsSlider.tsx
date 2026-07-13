@@ -9,7 +9,7 @@ import {
 } from "@/lib/reviews-data";
 import { ReviewCard } from "./ReviewCard";
 import { Container } from "./ui/Container";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import { Reveal } from "./Reveal";
 
 function useSlidesPerView() {

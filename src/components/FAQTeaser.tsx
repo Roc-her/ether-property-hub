@@ -1,7 +1,7 @@
 import { faqs, siteConfig } from "@/lib/site-data";
 import { Container } from "./ui/Container";
 import { SectionHeading } from "./ui/SectionHeading";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import { FAQAccordion } from "./FAQAccordion";
 
 const previewFaqs = faqs.slice(0, 4);
