@@ -51,7 +51,7 @@ export function ProjectsTeaser() {
         </div>
 
         <div className="mt-12">
-          <Button href="/contact" variant="primary" size="lg">
+          <Button booking variant="primary" size="lg">
             {siteConfig.cta}
             <span aria-hidden="true">→</span>
           </Button>

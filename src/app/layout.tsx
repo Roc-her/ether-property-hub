@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
 import { IntroOverlay } from "@/components/IntroOverlay";
+import { VexurCalendarProvider } from "@/components/vexur/VexurCalendarProvider";
 import { siteConfig } from "@/lib/site-data";
 import { siteImages } from "@/lib/site-images";
+import { vexurCalendarConfig } from "@/lib/vexur-calendar";
 import "./globals.css";
 
 const bodyFont = DM_Sans({
@@ -90,10 +92,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-AU" className={`${bodyFont.variable} ${displayFont.variable} h-full antialiased`}>
+      <head>
+        <link rel="preconnect" href={vexurCalendarConfig.embedOrigin} crossOrigin="anonymous" />
+      </head>
       <body className="min-h-full flex flex-col font-sans">
         <JsonLd />
         <IntroOverlay />
-        {children}
+        <VexurCalendarProvider>{children}</VexurCalendarProvider>
       </body>
     </html>
   );

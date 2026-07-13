@@ -35,7 +35,7 @@ export function Process() {
           <Button href="/process" variant="outline" size="md">
             See how it works
           </Button>
-          <Button href="/contact" variant="primary" size="md">
+          <Button booking variant="primary" size="md">
             {siteConfig.cta}
             <span aria-hidden="true">→</span>
           </Button>

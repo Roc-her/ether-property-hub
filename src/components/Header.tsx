@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useVexurCalendar } from "@/components/vexur/VexurCalendarProvider";
 import { LogoWordmark } from "./Logo";
 import { siteConfig } from "@/lib/site-data";
 import { isNavActive, mainNavLinks } from "@/lib/navigation";
 
 export function Header() {
   const pathname = usePathname();
+  const { open: openBooking } = useVexurCalendar();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -70,12 +72,13 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/contact"
+          <button
+            type="button"
+            onClick={openBooking}
             className="btn-cta hidden h-10 items-center px-5 text-[10.5px] sm:inline-flex"
           >
             {siteConfig.cta}
-          </Link>
+          </button>
 
           <button
             type="button"
@@ -116,12 +119,16 @@ export function Header() {
                 </Link>
               );
             })}
-            <Link
-              href="/contact"
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                openBooking();
+              }}
               className="btn-cta mt-4 h-11 w-full text-[11px]"
             >
               {siteConfig.cta}
-            </Link>
+            </button>
           </div>
         </nav>
       )}

@@ -34,7 +34,7 @@ export function ReviewsTeaser() {
             View on Google
             <span aria-hidden="true">↗</span>
           </Button>
-          <Button href="/contact" variant="primary" size="md">
+          <Button booking variant="primary" size="md">
             Book a free consultation
             <span aria-hidden="true">→</span>
           </Button>

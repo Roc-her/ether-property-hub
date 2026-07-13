@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site-data";
 import { siteImages } from "@/lib/site-images";
 
@@ -32,7 +33,7 @@ export function Hero() {
             </div>
 
             <div className="rise delay-300 mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link href="/contact" className="btn-cta h-12 px-8 text-[11.5px]">
+              <Button booking variant="primary" size="lg" className="h-12 px-8 text-[11.5px]">
                 {siteConfig.cta}
                 <span
                   aria-hidden="true"
@@ -40,7 +41,7 @@ export function Hero() {
                 >
                   →
                 </span>
-              </Link>
+              </Button>
               <Link href="/projects" className="btn-ghost-light h-12 px-8 text-[11.5px]">
                 View client purchases
               </Link>

@@ -39,7 +39,7 @@ export function FAQTeaser() {
         </div>
 
         <div className="mt-12 border-t border-line pt-10">
-          <Button href="/contact" variant="primary" size="md">
+          <Button booking variant="primary" size="md">
             {siteConfig.cta}
             <span aria-hidden="true">→</span>
           </Button>

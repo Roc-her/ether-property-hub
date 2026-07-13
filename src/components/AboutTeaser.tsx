@@ -25,7 +25,7 @@ export function AboutTeaser() {
               <Button href="/about" variant="outline" size="md">
                 Read our full story
               </Button>
-              <Button href="/contact" variant="primary" size="md">
+              <Button booking variant="primary" size="md">
                 {siteConfig.cta}
                 <span aria-hidden="true">→</span>
               </Button>

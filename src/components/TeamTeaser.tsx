@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 import { team, siteConfig } from "@/lib/site-data";
 import { siteImages } from "@/lib/site-images";
 import { Container } from "./ui/Container";
@@ -44,10 +45,10 @@ export function TeamTeaser() {
               <Link href="/team" className="btn-outline h-11 px-6 text-[11px]">
                 Meet the team
               </Link>
-              <Link href="/contact" className="btn-cta h-11 px-6 text-[11px]">
+              <Button booking variant="primary" size="md" className="h-11 px-6 text-[11px]">
                 {siteConfig.cta}
                 <span aria-hidden="true">→</span>
-              </Link>
+              </Button>
             </div>
           </Reveal>
         </div>

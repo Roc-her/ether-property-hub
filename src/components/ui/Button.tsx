@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import { useVexurCalendar } from "@/components/vexur/VexurCalendarProvider";
 
 type Variant = "primary" | "ghost" | "outline";
 type Size = "sm" | "md" | "lg";
@@ -26,17 +29,40 @@ type Common = {
   children: ReactNode;
 };
 
+type ButtonAsBooking = Common & {
+  booking: true;
+  href?: undefined;
+} & Omit<ComponentPropsWithoutRef<"button">, "className" | "children">;
+
 type ButtonAsButton = Common & {
   href?: undefined;
+  booking?: false;
 } & Omit<ComponentPropsWithoutRef<"button">, "className" | "children">;
 
 type ButtonAsLink = Common & {
   href: string;
+  booking?: never;
 } & Omit<ComponentPropsWithoutRef<typeof Link>, "href" | "className" | "children">;
 
-export function Button(props: ButtonAsButton | ButtonAsLink) {
+export function Button(props: ButtonAsBooking | ButtonAsButton | ButtonAsLink) {
   const { variant = "primary", size = "md", className, children } = props;
   const cls = `${base} ${variants[variant]} ${sizes[size]} ${className ?? ""}`.trim();
+
+  if (props.booking) {
+    const { open } = useVexurCalendar();
+    const { booking: _b, variant: _v, size: _s, className: _c, children: _ch, ...rest } =
+      props as ButtonAsBooking & { variant?: Variant; size?: Size };
+    void _b;
+    void _v;
+    void _s;
+    void _c;
+    void _ch;
+    return (
+      <button type="button" className={cls} onClick={open} {...rest}>
+        {children}
+      </button>
+    );
+  }
 
   if (props.href !== undefined) {
     const { href, variant: _v, size: _s, className: _c, children: _ch, ...rest } =

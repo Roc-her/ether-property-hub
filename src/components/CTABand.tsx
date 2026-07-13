@@ -22,7 +22,7 @@ export function CTABand({
               <h2 className="premium-h2 mt-4 text-balance text-white">{title}</h2>
               <p className="mt-4 text-[15px] leading-[1.8] text-white/68">{description}</p>
             </div>
-            <Button href="/contact" variant="primary" size="lg" className="shrink-0">
+            <Button booking variant="primary" size="lg" className="shrink-0">
               {siteConfig.cta}
               <span aria-hidden="true">→</span>
             </Button>

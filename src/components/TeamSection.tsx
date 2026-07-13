@@ -56,7 +56,7 @@ export function TeamSection() {
               </div>
 
               <div className="mt-8">
-                <Button href="/contact" variant="primary" size="md">
+                <Button booking variant="primary" size="md">
                   {siteConfig.cta}
                   <span aria-hidden="true">→</span>
                 </Button>

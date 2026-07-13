@@ -21,7 +21,7 @@ export function AboutStory() {
             </div>
             <blockquote className="pull-quote mt-8 max-w-xl">{aboutContent.closing}</blockquote>
             <div className="mt-8">
-              <Button href="/contact" variant="primary" size="md">
+              <Button booking variant="primary" size="md">
                 {siteConfig.cta}
                 <span aria-hidden="true">→</span>
               </Button>
