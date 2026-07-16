@@ -12,7 +12,7 @@ export const siteConfig = {
   contact: "Amir Thapa Magaranti",
   contactRole: "Director & Buyer's Agent",
   facebook: "https://www.facebook.com/profile.php?id=61564510874915",
-  instagram: "https://www.instagram.com/etherpropertyhub",
+  instagram: "https://www.instagram.com/amir.buyersagent",
   tiktok: "https://www.tiktok.com/@amiretherpropertyhub",
   socialHandle: "@amiretherpropertyhub",
   cta: "Book a free consultation",
