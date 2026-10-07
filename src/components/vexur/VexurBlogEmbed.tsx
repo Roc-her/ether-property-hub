@@ -1,38 +1,39 @@
 "use client";
-import { VexurFirstPaintHost, WIDGET_FIRST_PAINT } from "../../../vexur-widget-first-paint";
-
 
 import { useEffect } from "react";
-import { vexurCalendarConfig, vexurContactConfig } from "@/lib/vexur-calendar";
+import { vexurCalendarConfig } from "@/lib/vexur-calendar";
 
 function refreshVexurWidgets() {
   window.VexurWidgetLoader?.refresh?.();
 }
 
-export function VexurContactEmbed({ className = "" }: { className?: string }) {
+type VexurBlogEmbedProps =
+  | { placement: "archive"; postSlug?: never; className?: string }
+  | { placement: "post"; postSlug: string; className?: string };
+
+export function VexurBlogEmbed({ placement, postSlug, className = "" }: VexurBlogEmbedProps) {
   useEffect(() => {
     // Nudge the loader a few times in case the script mounts after React.
     const timers = [0, 200, 800, 2000].map((ms) =>
       window.setTimeout(refreshVexurWidgets, ms),
     );
     return () => timers.forEach(clearTimeout);
-  }, []);
+  }, [placement, postSlug]);
 
   return (
-    <div className={`vexur-contact-shell ${className}`.trim()}>
-      <VexurFirstPaintHost firstPaint={WIDGET_FIRST_PAINT.contact}
+    <div className={`vexur-blog-shell ${className}`.trim()}>
+      <div
+        key={`${placement}:${postSlug ?? ""}`}
         className="vexur-widget w-full"
-        data-widget="contact"
+        data-widget="blog"
         data-agent={vexurCalendarConfig.agentId}
         data-loader="v2"
         data-theme={vexurCalendarConfig.theme}
         data-primary-color={vexurCalendarConfig.primaryColor}
-        data-show-branding="true"
         data-consent="pending"
         data-vx-no-fallback="true"
-        data-vx-param-form-widget-build-id={vexurContactConfig.formWidgetBuildId}
-        data-vx-param-form-id={vexurContactConfig.formId}
-        data-vx-param-v={vexurContactConfig.version}
+        data-vx-param-placement={placement}
+        {...(postSlug ? { "data-vx-param-slug": postSlug } : {})}
       />
     </div>
   );

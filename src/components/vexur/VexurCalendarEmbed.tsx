@@ -1,8 +1,9 @@
+import { VexurFirstPaintHost, WIDGET_FIRST_PAINT } from "../../../vexur-widget-first-paint";
 import { vexurCalendarConfig } from "@/lib/vexur-calendar";
 
 export function VexurCalendarEmbed({ className = "" }: { className?: string }) {
   return (
-    <div
+    <VexurFirstPaintHost firstPaint={WIDGET_FIRST_PAINT.calendar}
       className={`vexur-widget ${className}`.trim()}
       data-widget="calendar"
       data-agent={vexurCalendarConfig.agentId}
